@@ -1,24 +1,19 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* This is a Hotel Management app which allows you to list the Customers present, Add new customers, Update and Delete them
 
-Things you may want to cover:
+- Welcome Page - It has two options
+1. To view the customer list
+2. To view the Room list
+![Welcome Pag](/images/welcome.png)
+Format: ![Alt Text](url)
 
-* Ruby version
+- Customer List
+![Customer Pag](/images/customer_list.png)
+Format: ![Alt Text](url)
 
-* System dependencies
+- Room List
+![Room Pag](/images/room_list.png)
+Format: ![Alt Text](url)
+* It also 
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
