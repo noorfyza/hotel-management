@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :checkindate %>
-    <%= form.date_select Time.now, disabled: true %>
+    <%= form.date_select :checkindate, value: Time.now, disabled: true, required: true %>
   </div>
 
   <div class="field">
@@ -24,12 +24,12 @@
   <div class="field">
     <%= form.label :customer_id %>
     <% customer_name = Customer.find(params[:customer_id]).name%>
-    <%= form.text_field :customer_name, value: customer_name, disabled: true %>
+    <%= form.text_field :customer_id, value: customer_name, disabled: true, required: true %>
   </div>
 
   <div class="field">
     <%= form.label 'Amount per night($)' %>
-    <%= form.number_field :amount_to_be_paid %>
+    <%= form.number_field :amount_to_be_paid, required: true %>
   </div>
 
   <div class="actions">
