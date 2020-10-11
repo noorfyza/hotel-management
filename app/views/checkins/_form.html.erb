@@ -1,0 +1,59 @@
+<%= form_with(model: checkin, local: true) do |form| %>
+  <% if checkin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(checkin.errors.count, "error") %> prohibited this checkin from being saved:</h2>
+
+      <ul>
+      <% checkin.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :checkindate %>
+    <%= form.date_select Time.now, disabled: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :room_id %>
+    <%= form.collection_select :room_id, @rooms, :id, :room_type, include_blank: 'Select Room', required: true%>
+  </div>
+
+  <div class="field">
+    <%= form.label :customer_id %>
+    <% customer_name = Customer.find(params[:customer_id]).name%>
+    <%= form.text_field :customer_name, value: customer_name, disabled: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label 'Amount per night($)' %>
+    <%= form.number_field :amount_to_be_paid %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>
+
+<script>
+$("#checkin_room_id").on('change', function(){
+  var roomId = this.value;
+  $.ajax({
+    url: '/get_price',
+    type: 'GET',
+    data: {
+      room_id: roomId,
+    },
+    success: function(data) {
+      if(data.success==true){
+       document.getElementById('checkin_amount_to_be_paid').value = data.price;
+       document.getElementById('checkin_amount_to_be_paid').disabled = true;
+      }
+
+    }
+  });
+});
+</script>

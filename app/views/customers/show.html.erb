@@ -1,0 +1,44 @@
+<p id="notice" style="color:#00cccc;"><%= notice %></p>
+
+<table id = "list_customers", class="table table-hover">
+
+  <tr><th colspan=2> Customer Details</th> </tr>
+  <tr>
+    <td>First Name</td>
+    <td><%= @customer.first_name %></td>
+  </tr>
+
+  <tr>
+    <td>Last Name</td>
+    <td><%= @customer.last_name %></td>
+  </tr>
+
+  <tr>
+    <td>Age</td>
+    <td><%= @customer.age %></td>
+  </tr>
+
+  <tr>
+    <td>Sex</td>
+    <td><%= @customer.sex %></td>
+  </tr>
+
+  <tr>
+    <td>Address</td>
+    <td><%= @customer.address %></td>
+  </tr>
+
+  <tr>
+    <td>Mobile</td>
+    <td><%= @customer.mobile %></td>
+  </tr>
+
+  <tr>
+    <td>Email</td>
+    <td><%= @customer.email %></td>
+  </tr>
+</table>
+<p>
+<%= link_to '<button type="button" class="btn btn-default">Update</button>'.html_safe, edit_customer_path(@customer) %>
+<%= link_to '<button type="button" class="btn btn-default">Back</button>'.html_safe, customers_path %>
+</p>

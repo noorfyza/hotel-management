@@ -1,0 +1,35 @@
+<p id="notice" style="color:#00cccc;"><%= notice %></p>
+
+<table id = "list_rooms", class="table table-hover">
+
+  <tr><th colspan=2> Customer Details</th> </tr>
+  <tr>
+    <td>Room no.</td>
+    <td><%= @room.room_no %></td>
+  </tr>
+
+  <tr>
+    <td>Room Name</td>
+    <td><%= @room.name %></td>
+  </tr>
+
+  <tr>
+    <td>Room Type</td>
+    <td><%= @room.room_type %></td>
+  </tr>
+
+  <tr>
+    <td>Facilities</td>
+    <td><%= @room.facilities %></td>
+  </tr>
+
+  <tr>
+    <td>Price per night($)</td>
+    <td><%= @room.price %></td>
+  </tr>
+
+</table>
+<p>
+<%= link_to '<button type="button" class="btn btn-default">Update</button>'.html_safe, edit_room_path(@room) %>
+<%= link_to '<button type="button" class="btn btn-default">Back</button>'.html_safe, rooms_path %>
+</p>

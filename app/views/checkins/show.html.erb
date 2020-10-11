@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Checkindate:</strong>
+  <%= @checkin.checkindate %>
+</p>
+
+<p>
+  <strong>Checkoutdate:</strong>
+  <%= @checkin.checkoutdate %>
+</p>
+
+<p>
+  <strong>Room:</strong>
+  <%= @checkin.room %>
+</p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @checkin.customer %>
+</p>
+
+<p>
+  <strong>Amount to be paid:</strong>
+  <%= @checkin.amount_to_be_paid %>
+</p>
+
+<%= link_to '<button type="button" class="btn btn-default">Edit</button>'.html_safe, edit_checkin_path(@checkin) %>
+<%= link_to '<button type="button" class="btn btn-default">Back</button>'.html_safe, checkins_path %>

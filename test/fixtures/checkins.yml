@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  checkindate: 2020-10-11 18:03:31
+  checkoutdate: 2020-10-11 18:03:31
+  room: one
+  customer: one
+  amount_to_be_paid: 1
+
+two:
+  checkindate: 2020-10-11 18:03:31
+  checkoutdate: 2020-10-11 18:03:31
+  room: two
+  customer: two
+  amount_to_be_paid: 1
