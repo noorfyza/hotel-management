@@ -19,11 +19,11 @@
     <% @checkins.each do |checkin| %>
       <tr>
         <td><%= checkin.checkindate %></td>
-        <td><%= checkin.room %></td>
-        <td><%= checkin.customer %></td>
+        <td><%= checkin.room_id %></td>
+        <td><%= checkin.customer_id %></td>
         <td><%= checkin.amount_to_be_paid %></td>
         <td><%= link_to '<button type="button" class="btn btn-default">Update</button>'.html_safe, edit_checkin_path(checkin) %></td>
-        <td><%= link_to '<button type="button" class="btn btn-default">Destroy</button>'.html_safe, room, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <td><%= link_to '<button type="button" class="btn btn-default">Destroy</button>'.html_safe, checkin, method: :delete, data: { confirm: 'Are you sure?' } %>
       </tr>
     <% end %>
   </tbody>

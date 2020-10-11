@@ -35,7 +35,7 @@
         <% if checkin_record(customer).eql?(true)%>
           <td><%= link_to '<button type="button" class="btn btn-default" id="checkin_btn">Checkin</button>'.html_safe, new_checkin_path(customer_id: customer.id) %>
         <%else%>
-          <td><%= link_to '<button type="button" class="btn btn-default checkout-btn" id="checkin_btn">Checkout</button>'.html_safe %>
+          <td><%= link_to '<button type="button" class="btn btn-default checkout-btn" id="checkin_btn">Checkout</button>'.html_safe, "/checkout?customer_id=#{customer.id}" %>
         <%end%>
       </tr>
     <% end %>

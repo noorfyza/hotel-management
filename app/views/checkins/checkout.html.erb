@@ -1,0 +1,25 @@
+<p id="notice" style="color:#00cccc;"><%= notice %></p>
+
+<table id = "list_rooms", class="table table-hover">
+
+  <tr><th colspan=2> Checkin Details</th> </tr>
+  <tr>
+    <td>Room no.</td>
+    <td><%= @checkin_record.room.room_type %></td>
+  </tr>
+
+  <tr>
+    <td>Checkedin Date</td>
+    <td><%= @checkin_record.checkindate.strftime("%m/%d/%Y") %></td>
+  </tr>
+
+  <tr>
+    <td>Amount to be paid</td>
+    <td><%= @amount_to_be_paid %></td>
+  </tr>
+
+</table>
+<p>
+<%= link_to '<button type="button" class="btn btn-default">Complete payment and Checkout?</button>'.html_safe, "/checkout_complete?customer_id=#{params[:customer_id]}" %>
+<%= link_to '<button type="button" class="btn btn-default">Cancel</button>'.html_safe, customers_path %>
+</p>

@@ -26,14 +26,15 @@ class CheckinsController < ApplicationController
   # POST /checkins
   # POST /checkins.json
   def create
-    binding.pry
+    params[:checkindate] = DateTime.now
     @checkin = Checkin.new(checkin_params)
 
     respond_to do |format|
       if @checkin.save
-        format.html { redirect_to @checkin, notice: 'Checkin was successfully created.' }
-        format.json { render :show, status: :created, location: @checkin }
-        @checked_in.room.update(availability: false)
+        format.html { redirect_to customers_path, notice: 'Checkin was successfully created.' }
+        @checkin.update(checked_in: true)
+        @checkin.room.update(availability: false)
+
       else
         format.html { render :new }
         format.json { render json: @checkin.errors, status: :unprocessable_entity }
@@ -65,6 +66,22 @@ class CheckinsController < ApplicationController
     end
   end
 
+  def checkout
+    @checkin_record = Checkin.where(customer_id: params[:customer_id], checked_in: true).first
+    no_of_days = DateTime.now.to_date.mjd - @checkin_record.checkindate.to_date.mjd
+    @amount_to_be_paid = @checkin_record.room.price * no_of_days
+  end
+
+  def checkout_complete
+    @checkin_record = Checkin.where(customer_id: params[:customer_id], checked_in: true).first
+    @checkin_record.update(checked_in: false)
+    @checkin_record.room.update(availability: true)
+    respond_to do |format|
+      format.html { redirect_to customers_path, notice: 'Checkout was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_checkin
@@ -73,6 +90,6 @@ class CheckinsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def checkin_params
-      params.require(:checkin).permit(:checkindate, :checkoutdate, :room_id, :customer_id, :amount_to_be_paid, :checked_out)
+      params.require(:checkin).permit(:checkindate, :checkoutdate, :room_id, :customer_id, :amount_to_be_paid, :checked_in)
     end
 end

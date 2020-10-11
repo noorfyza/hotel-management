@@ -87,3 +87,7 @@ tr:hover {
     text-transform: uppercase;
     font-size: 18px;
   }
+
+  #checkin_checkindate_1i, #checkin_checkindate_2i, #checkin_checkindate_3i{
+    pointer-events:none;background: #f2f2f2;
+  }
